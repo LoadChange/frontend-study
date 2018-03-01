@@ -1,0 +1,43 @@
+@import "common";
+@import "submenu";
+.news {
+    padding-bottom: 50px;
+    h2 {
+        text-align: center;
+        font-size: 39px;
+        line-height: 100px;
+        margin-top: 10px;
+    }
+    .list {
+        padding: 0 52px;
+        li {
+            line-height: 36px;
+            &:before {
+                content: '';
+                display: inline-block;
+                width: 6px;
+                height: 6px;
+                background: $green;
+                position: relative;
+                top: -3px;
+                margin-right: 6px;
+            }
+            a{
+                line-height: 36px;
+                color: $black;
+                strong{
+                    font-size: 16px;
+                    font-weight: normal;
+                    &:hover{
+                        font-weight: bold;
+                    }
+                }
+                span{
+                    float: right;
+                    width: 150px;
+                    display: block;
+                }
+            }
+        }
+    }
+}

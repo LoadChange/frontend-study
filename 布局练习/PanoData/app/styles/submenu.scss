@@ -1,0 +1,40 @@
+.secondary {
+    margin-top: 1px;
+    border-top: 1px solid #666666;
+    box-shadow: 0px -1px 0px #000;
+    background: #333;
+    .submenu {
+        overflow: hidden;
+        margin: 0 auto;
+        width: 340px;
+        display: block;
+        li {
+            float: left;
+            color: #fff;
+            line-height: 36px;
+            a {
+                color: #fff;
+                padding: 0 1em;
+            }
+            &:first-child:after {
+                content: '|';
+            }
+        }
+        .active {
+            position: relative;
+            &:before {
+                content: '';
+                display: block;
+                width: 0;
+                height: 0;
+                border-left: 7px solid transparent;
+                border-right: 7px solid transparent;
+                border-bottom: 8px solid #fff;
+                position: absolute;
+                bottom: -11px;
+                left: 50%;
+                margin-left: -6px;
+            }
+        }
+    }
+}

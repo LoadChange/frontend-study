@@ -1,0 +1,160 @@
+@import "common";
+.carousel {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    .carousel-indicators {
+        position: absolute;
+        bottom: 38px;
+        left: 50%;
+        margin-left: -56px;
+        z-index: 100;
+        li {
+            width: 12px;
+            height: 12px;
+            background: #fff;
+            border-radius: 50%;
+            float: left;
+            margin: 0 8px;
+            cursor: pointer;
+            &.active {
+                background: $blue;
+            }
+        }
+    }
+    .carousel-inner {
+        overflow: hidden;
+        position: relative;
+        .item {
+            width: 100%;
+            overflow: hidden;
+            float: left;
+            a {
+                display: block;
+                width: 1980px;
+                img {
+                    position: relative;
+                }
+            }
+        }
+    }
+}
+
+.product-introduction {
+    background: #f8f8f8;
+    padding-bottom: 40px;
+    h2 {
+        text-align: center;
+        font-size: 48px;
+        line-height: 1;
+        padding: 60px 0 50px;
+    }
+    dl.container {
+        margin: 0 auto;
+        height: 350px;
+        overflow: hidden;
+        dd {
+            display: block;
+            background: #fff;
+            width: 250px;
+            height: 300px;
+            float: left;
+            margin: 0 25px;
+            position: relative;
+            top: 16px;
+            box-shadow: 0 0 10px rgba(204, 204, 204, .39);
+            cursor: pointer;
+            img {
+                width: 96px;
+                margin: 50px auto 40px;
+                display: block;
+            }
+            h3 {
+                margin-top: 40px;
+                font-size: 20px;
+                font-weight: bold;
+                text-align: center;
+            }
+            p {
+                margin-top: 10px;
+                display: block;
+                text-align: center;
+                padding: 0 .5em;
+                color: $black;
+                font-size: 16px;
+                line-height: 24px;
+            }
+            a.btn {
+                display: none;
+                margin: 8px auto;
+                color: #fff;
+                background: $green;
+                line-height: 30px;
+                width: 100px;
+                text-align: center;
+                font-size: 13px;
+                padding: 0;
+            }
+            &:hover {
+                img{
+                    margin: 25px auto;
+                }
+                h3 {
+                    margin-top: 0;
+                }
+                p {
+                    margin-top: 0;
+                }
+                a.btn {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+.partners {
+    position: relative;
+    max-height: 418px;
+    img.bg {
+        display: block;
+        width: 100%;
+        max-height: 418px;
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+    .partners-inner {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(52, 111, 132, .43);
+        h2 {
+            font-size: 38px;
+            line-height: 3.6;
+            text-align: center;
+            color: #fff;
+        }
+        table {
+            width: 900px;
+            margin: 0 auto;
+            td {
+                width: 20%;
+                height: 46px;
+                padding: 22px 0;
+                cursor: pointer;
+                img {
+                    max-width: 150px;
+                    max-height: 46px;
+                    display: block;
+                    margin: 0 auto;
+                }
+                &:hover {
+                    background: $green;
+                }
+            }
+        }
+    }
+}

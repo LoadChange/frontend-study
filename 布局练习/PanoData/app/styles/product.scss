@@ -1,0 +1,29 @@
+@import "common";
+.product-list {
+    .item {
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 1px;
+        .bg {
+            width: 1980px;
+            img {
+                position: relative;
+            }
+        }
+        .btn-group {
+            position: absolute;
+            z-index: 100;
+            bottom: 56px;
+            left: 50%;
+            margin-left: -180px;
+            .btn {
+                display: block;
+                float: left;
+                margin: 0 20px;
+            }
+        }
+        &:first-child .btn-group {
+            margin-left: -270px;
+        }
+    }
+}

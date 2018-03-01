@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0
+    }
+
+    .solution-list {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+    }
+
+    .solution-item {
+      flex: 1;
+      margin-left: 10px;
+    }
+
+    .solution-item:first-child {
+      margin-left: 0;
+    }
+
+    .top {
+      height: 300px;
+      background: red;
+    }
+
+    .middle {
+      background: yellow;
+    }
+
+    .bottom {
+      height: 300px;
+      background: blue;
+    }
+
+    .solution-1 {
+      position: relative;
+      height: 100%;
+    }
+
+    .solution-1 .top {
+      position: absolute;
+      width: 100%;
+      top: 0;
+    }
+
+    .solution-1 .middle {
+      position: absolute;
+      top: 300px;
+      bottom: 300px;
+      width: 100%;
+      overflow-y: scroll;
+    }
+
+    .solution-1 .bottom {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>上下高度固定，中间自适应</h3>
+
+
+  <div class="solution-list">
+    <div class="solution-item solution-1">
+      <div class="top"></div>
+      <div class="middle"><br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000<br>10000000</div>
+      <div class="bottom"></div>
+    </div>
+    <div class="solution-item solution-1">
+      <div class="top"></div>
+      <div class="middle"></div>
+      <div class="bottom"></div>
+    </div>
+    <div class="solution-item solution-1">
+      <div class="top"></div>
+      <div class="middle"></div>
+      <div class="bottom"></div>
+    </div>
+  </div>
+</body>
+
+</html>

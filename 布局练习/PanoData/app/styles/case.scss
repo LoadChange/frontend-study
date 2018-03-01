@@ -1,0 +1,123 @@
+@import "common";
+h2.case-head {
+    display: block;
+    height: 260px;
+    background: url(../images/casehead.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    line-height: 260px;
+    font-size: 50px;
+    color: #fff;
+    text-align: center;
+}
+
+.container {
+    h3 {
+        font-size: 48px;
+        text-align: center;
+        line-height: 99px;
+    }
+}
+
+.industry {
+    .list {
+        overflow: hidden;
+        li {
+            width: 300px;
+            float: left;
+            margin: 22px 50px;
+            a {
+                strong {
+                    color: #fff;
+                    z-index: 100;
+                    font-size: 30px;
+                    font-weight: normal;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 300px;
+                    line-height: 100px;
+                    text-align: center;
+                }
+                display: block;
+                height: 100px;
+                width: 300px;
+                position: relative;
+                &:after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    background: rgba(0, 0, 0, .3);
+                }
+                // &:hover:after {
+                //     display: block;
+                // }
+            }
+            &:nth-child(1) a {
+                background-image: url(../images/industry-estate.png);
+            }
+            &:nth-child(n+2) a {
+                background-image: url(../images/industry-financial.png);
+            }
+            &:nth-child(3) a {
+                background-image: url(../images/industry-p2p.png);
+            }
+            &:nth-child(4) a {
+                background-image: url(../images/industry-internet.png);
+            }
+            &:nth-child(5) a {
+                background-image: url(../images/industry-credit.png);
+            }
+            &:nth-child(6) a {
+                background-image: url(../images/industry-edu.png);
+            }
+        }
+    }
+}
+
+.success {
+    background: #f3f3f3;
+    padding-bottom: 50px;
+    .list {
+        overflow: hidden;
+        margin-bottom: 20px;
+        li {
+            background: $green;
+            width: 335px;
+            height: 385px;
+            box-sizing: border-box;
+            margin: 0 32px;
+            border: 1px solid #e0e0e0;
+            float: left;
+            img {
+                display: block;
+                width: 288px;
+                height: 44px;
+                margin: 38px auto;
+            }
+            .explain {
+                background: #fff;
+                padding-top: 12px;
+                p {
+                    padding: 0 1em;
+                    margin: 26px 0 0;
+                    &:last-child {
+                        padding-bottom: 20px;
+                    }
+                    label {
+                        font-weight: bold;
+                    }
+                    span{
+                        font-size: 14px;
+                        line-height: 23px;
+                        color: #333333;
+                    }
+                }
+            }
+        }
+    }
+}

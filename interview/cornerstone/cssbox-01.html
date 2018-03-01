@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    #sec {
+      background: #f00;
+      margin-bottom: 30px;
+    }
+
+    .child {
+      height: 100px;
+      margin-top: 10px;
+      background: yellow;
+    }
+
+    #sec-1 {
+      margin-top: 5px;
+      height: 100px;
+      background: blue;
+    }
+  </style>
+  <div id="sec">
+    <div class="child"></div>
+  </div>
+  <div id="sec-1">
+    sec下边距30，sec-1上边距5，边距合并取30.
+  </div>
+
+  <!-- BFC 垂直方向边距重叠 -->
+  <style>
+    #margin {
+      background: pink;
+      overflow: hidden;
+    }
+
+    #margin p {
+      margin: 5px auto 25px;
+      background: red;
+    }
+  </style>
+  <section id="margin">
+    <p>1</p>
+    <div style="overflow:hiiden;">
+      <p>2</p>
+    </div>
+    <p>3</p>
+  </section>
+
+  <style>
+    #layout {
+      margin-top: 30px;
+    }
+
+    #layout .left {
+      float: left;
+      width: 100px;
+      height: 100px;
+      background: pink;
+    }
+
+    #layout .right {
+      background: #ccc;
+      height: 110px;
+      overflow: auto;
+    }
+  </style>
+  <section id="layout">
+    <div class="left">111</div>
+    <div class="right">BFC的区域不会与浮动元素的box重叠</div>
+  </section>
+
+  <style>
+    #float {
+      margin-top: 40px;
+      background: #999;
+      overflow: hidden;
+    }
+
+    #float .float {
+      float: left;
+      color: #000;
+      font-size: 30px
+    }
+  </style>
+
+  <section id="float">
+    <div class="float">清除浮动,bfc即使子元素是浮动元素，也会参与父元素高度计算。</div>
+  </section>
+</body>
+
+</html>

@@ -1,0 +1,324 @@
+@import "common";
+header > .container {
+    overflow: initial;
+}
+
+.headpic {
+    overflow: hidden;
+    position: relative;
+    .bg {
+        width: 1980px;
+        img {
+            position: relative;
+            display: black;
+        }
+    }
+    & > .btn {
+        position: absolute;
+        bottom: 60px;
+        left: 50%;
+        margin-left: -70px;
+    }
+    & > .btn-group {
+        width: 404px;
+        position: absolute;
+        bottom: 60px;
+        left: 50%;
+        margin-left: -202px;
+        & > .btn {
+            margin: 0 20px;
+        }
+    }
+}
+
+.container {
+    h2 {
+        font-size: 40px;
+        margin: 75px 0 55px;
+        line-height: 1;
+        text-align: center;
+        &.marketing {
+            line-height: 1;
+            margin-top: 70px;
+        }
+    }
+    & >p {
+        padding: 0 1.5em;
+        color: $black;
+        margin-bottom: 65px;
+        font-size: 22px;
+        line-height: 37px;
+    }
+    & > strong {
+        display: block;
+        font-size: 19px;
+        text-align: center;
+        font-weight: normal;
+        color: $black;
+        margin: 25px 0 50px;
+    }
+}
+
+.function {
+    // margin-top: 50px;
+    &.callindex {
+        img.blue {
+            position: relative;
+            top: 48px;
+        }
+    }
+    &.riskcontrol {
+        img.green {
+            position: relative;
+            top: -28px;
+        }
+        img.orange {
+            position: relative;
+            top: -18px;
+        }
+        img.blue {
+            position: relative;
+            top: -20px;
+        }
+        img.yellow {
+            position: relative;
+            top: 52px;
+        }
+    }
+    &.bigdata{
+        img.green {
+            position: relative;
+            top: 96px;
+        }
+        img.orange {
+            position: relative;
+            top: 150px;
+        }
+        img.blue {
+            position: relative;
+            top: 70px;
+        }
+        img.yellow {
+            position: relative;
+            top: 52px;
+        }
+    }
+    li {
+        overflow: hidden;
+        padding: 0 1.6em;
+        &:nth-child(odd) {
+            background: #f3f3f3;
+            img {
+                float: right;
+                margin: 90px 90px 60px 0;
+            }
+            .explain {
+                float: left;
+                margin-left: 52px;
+            }
+        }
+        &:nth-child(even) {
+            img {
+                margin: 90px 0 60px 69px;
+            }
+            .explain {
+                margin-right: 52px;
+            }
+        }
+        .explain {
+            width: 42%;
+            float: right;
+            h3 {
+                font-size: 45px;
+                line-height: 1;
+                margin: 80px 0 65px;
+            }
+            p {
+                margin-bottom: 60px;
+                font-size: 22px;
+                line-height: 37px;
+            }
+        }
+        img {
+            height: 256px;
+            float: left;
+        }
+    }
+}
+
+.tail {
+    &.marketing {
+        padding: 75px 0 0;
+    }
+    &.riskcontrol {
+        h5 {
+            padding-top: 75px;
+            margin-bottom: 28px;
+        }
+    }
+    background: $green;
+    position: relative;
+    overflow: hidden;
+    &:before {
+        position: absolute;
+        top: 0;
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border-left: 18px solid transparent;
+        border-right: 18px solid transparent;
+        border-top: 18px solid #fff;
+        left: 50%;
+        margin-left: -9px;
+    }
+    &.van:before {
+        border-top: 18px solid #f3f3f3;
+    }
+    h5 {
+        font-weight: normal;
+        text-align: center;
+        line-height: 1;
+        color: #fff;
+        font-size: 45px;
+    }
+    h6 {
+        font-weight: normal;
+        color: #fff;
+        text-align: center;
+        display: block;
+        font-size: 22px;
+        line-height: 1;
+        margin: 25px 0 50px;
+    }
+    .scheme {
+        width: 180px;
+        float: left;
+        margin: 30px 30px 65px;
+        color: #fff;
+        li {
+            img {
+                display: block;
+                margin: 0 auto;
+                width: 89px;
+            }
+            &:nth-child(2) {
+                text-align: center;
+                line-height: 30px;
+                font-size: 22px;
+                line-height: 56px;
+            }
+            &:last-child {
+                line-height: 28px;
+            }
+        }
+    }
+    .leftbox {
+        width: 40%;
+        margin: 75px 220px 75px 80px;
+        display: inline-block;
+        & > i {
+            display: block;
+            font-size: 36px;
+            font-style: normal;
+            color: #fff;
+        }
+        & >input {
+            outline: 0;
+            height: 55px;
+            width: 400px;
+            text-align: center;
+            border: 5px solid #52c988;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+        & > .btn {
+            width: 308px;
+            text-align: center;
+        }
+        & > b {
+            display: block;
+            color: #fff;
+            font-weight: normal;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+    }
+    img.callindex04 {
+        display: inline-block;
+        margin-top: 80px;
+    }
+}
+
+.container {
+    overflow: hidden;
+}
+
+.box {
+    cursor: pointer;
+    background: #fff;
+    width: 335px;
+    height: 170px;
+    margin: 0 32px 60px;
+    box-sizing: border-box;
+    float: left;
+    border: 1px solid #e9e9e9;
+    em {
+        font-size: 30px;
+        font-style: normal;
+        text-align: center;
+        width: 100%;
+        display: block;
+        margin-top: 10px;
+        &:before {
+            content: '';
+            display: inline-block;
+            width: 47px;
+            height: 30px;
+            background: url(../images/marketing-ico-1.png);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            margin-right: 4px;
+        }
+        &.c2:before {
+            background: url(../images/marketing-ico-2.png);
+            background-size: 100% 100%;
+            width: 52px;
+        }
+        &.c3:before {
+            background: url(../images/marketing-ico-3.png);
+            background-size: 100% 100%;
+            width: 39px;
+        }
+        &.c4:before {
+            width: 49px;
+            height: 47px;
+            background: url(../images/marketing-ico-4.png);
+            background-size: 100% 100%;
+            position: relative;
+            top: 9px;
+        }
+        &.c5:before {
+            width: 40px;
+            height: 40px;
+            background: url(../images/marketing-ico-5.png);
+            background-size: 100% 100%;
+            position: relative;
+            top: 6px;
+        }
+        &.c6:before {
+            width: 45px;
+            height: 35px;
+            background: url(../images/marketing-ico-6.png);
+            background-size: 100% 100%;
+            position: relative;
+            top: 4px;
+        }
+    }
+    p {
+        text-align: center;
+        padding: 0 1em;
+        font-size: 20px;
+        margin-top: 14px;
+    }
+}
