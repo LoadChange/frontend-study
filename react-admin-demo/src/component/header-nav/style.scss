@@ -1,0 +1,25 @@
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px 0 20px;
+    color: #fff;
+    line-height: 60px;
+    background: #2395ff;
+    h1 {
+        font-size: 18px;
+    }
+    .user-info {
+        display: flex;
+    }
+    .divider {
+        height: 16px;
+        width: 1px;
+        margin: 0 10px;
+        background: #fff;
+        display: block;
+        margin-top: 22px;
+    }
+    .logout{
+        color: #fff;
+    }
+}
