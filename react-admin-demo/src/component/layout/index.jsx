@@ -14,7 +14,9 @@ class Layout extends React.Component {
                 <HeaderNav />
                 <div className="bd">
                     <LeftNav />
-                    {this.props.children}
+                    <div className="content">
+                        {this.props.children}
+                    </div>
                 </div>
             </div>
         )
