@@ -13,6 +13,7 @@ module.exports = {
     },
     resolve: {
         alias: {
+            api: path.resolve(__dirname, 'src/api'),
             page: path.resolve(__dirname, 'src/page'),
             component: path.resolve(__dirname, 'src/component')
         }

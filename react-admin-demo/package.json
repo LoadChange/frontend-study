@@ -23,9 +23,11 @@
     "webpack-dev-server": "2.9.7"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "cube.css": "^1.3.2",
     "element-react": "^1.4.19",
     "element-theme-default": "^1.4.13",
+    "qs": "^6.5.2",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-router-dom": "^4.3.1"
