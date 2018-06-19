@@ -84,7 +84,7 @@ class Login extends React.Component {
         return (
             <div className="login-panel">
                 <Layout.Row gutter="20">
-                    <Layout.Col span="14" offset="6">
+                    <Layout.Col span="10" offset="7">
                         <Card
                             className="box-card"
                             header={
