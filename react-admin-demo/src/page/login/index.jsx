@@ -1,9 +1,9 @@
 import React from 'react';
-import { Layout, Card, Form, Button, Input, Dialog } from 'element-react';
-import { ManageUserLogin } from 'api/UserApi.jsx'
+import store from 'store';
+import {Layout, Card, Form, Button, Input, Dialog} from 'element-react';
+import {ManageUserLogin} from 'api/UserApi.jsx'
 import './style.scss';
-import { resolve } from 'url';
-
+import {resolve} from 'url';
 
 
 class Login extends React.Component {
@@ -19,7 +19,7 @@ class Login extends React.Component {
             },
             rules: {
                 username: [
-                    { required: true, message: '请输入用户名', trigger: 'blur' },
+                    {required: true, message: '请输入用户名', trigger: 'blur'},
                     {
                         validator: (rule, value, callback) => {
                             if (value === '') {
@@ -31,7 +31,7 @@ class Login extends React.Component {
                     }
                 ],
                 password: [
-                    { required: true, message: '请输入密码', trigger: 'blur' },
+                    {required: true, message: '请输入密码', trigger: 'blur'},
                     {
                         validator: (rule, value, callback) => {
                             if (value === '') {
@@ -52,6 +52,7 @@ class Login extends React.Component {
         this.refs.form.validate((valid) => {
             if (valid) {
                 ManageUserLogin(this.state.form).then(res => {
+                    store.set('userInfo', res)
                     location.href = '/'
                 }).catch(error => {
                     this.setState({
@@ -70,13 +71,13 @@ class Login extends React.Component {
         e.preventDefault();
         this.refs.form.resetFields();
         this.setState({
-            form: { username: '', password: '' }
+            form: {username: '', password: ''}
         });
     }
 
     onChange(key, value) {
         this.setState({
-            form: Object.assign({}, this.state.form, { [key]: value })
+            form: Object.assign({}, this.state.form, {[key]: value})
         });
     }
 
@@ -89,16 +90,19 @@ class Login extends React.Component {
                             className="box-card"
                             header={
                                 <div className="clearfix">
-                                    <span style={{ "lineHeight": "36px" }}>Welcome Login</span>
+                                    <span style={{"lineHeight": "36px"}}>Welcome Login</span>
                                 </div>
                             }
                         >
-                            <Form ref="form" model={this.state.form} rules={this.state.rules} labelWidth="100" className="demo-ruleForm">
+                            <Form ref="form" model={this.state.form} rules={this.state.rules} labelWidth="100"
+                                  className="demo-ruleForm">
                                 <Form.Item label="用户名" prop="username">
-                                    <Input value={this.state.form.username} onChange={this.onChange.bind(this, 'username')}></Input>
+                                    <Input value={this.state.form.username}
+                                           onChange={this.onChange.bind(this, 'username')}></Input>
                                 </Form.Item>
                                 <Form.Item label="密码" prop="password">
-                                    <Input type="password" value={this.state.form.password} onChange={this.onChange.bind(this, 'password')} autoComplete="off" />
+                                    <Input type="password" value={this.state.form.password}
+                                           onChange={this.onChange.bind(this, 'password')} autoComplete="off"/>
                                 </Form.Item>
                                 <Form.Item>
                                     <Button type="primary" onClick={this.handleSubmit.bind(this)}>提交</Button>
@@ -112,15 +116,15 @@ class Login extends React.Component {
                     title="提示"
                     size="tiny"
                     visible={this.state.dialogVisible}
-                    onCancel={() => this.setState({ dialogVisible: false })}
+                    onCancel={() => this.setState({dialogVisible: false})}
                     lockScroll={false}
                 >
                     <Dialog.Body>
                         <span>{this.state.dialogText}</span>
                     </Dialog.Body>
                     <Dialog.Footer className="dialog-footer">
-                        <Button onClick={() => this.setState({ dialogVisible: false })}>取消</Button>
-                        <Button type="primary" onClick={() => this.setState({ dialogVisible: false })}>确定</Button>
+                        <Button onClick={() => this.setState({dialogVisible: false})}>取消</Button>
+                        <Button type="primary" onClick={() => this.setState({dialogVisible: false})}>确定</Button>
                     </Dialog.Footer>
                 </Dialog>
             </div>
