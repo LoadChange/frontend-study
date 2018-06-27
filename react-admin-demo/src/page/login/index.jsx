@@ -5,7 +5,6 @@ import {ManageUserLogin} from 'api/UserApi.jsx'
 import './style.scss';
 import {resolve} from 'url';
 
-
 class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -52,7 +51,7 @@ class Login extends React.Component {
         this.refs.form.validate((valid) => {
             if (valid) {
                 ManageUserLogin(this.state.form).then(res => {
-                    store.set('userInfo', res)
+                    store.set('userInfo', res.data)
                     location.href = '/'
                 }).catch(error => {
                     this.setState({
