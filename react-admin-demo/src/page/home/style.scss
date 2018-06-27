@@ -1,0 +1,25 @@
+.bg-info {
+  background-color: #20a0ff;
+}
+
+.bg-success {
+  background-color: #13CE66;
+  margin: 0 40px;
+}
+
+.bg-warning {
+  background-color: #f7ba2a;
+}
+
+.box-list {
+  display: flex;
+  padding: 0 30px;
+  .box-item {
+    flex: 1;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    line-height: 120px;
+    border-radius: 4px;
+  }
+}
