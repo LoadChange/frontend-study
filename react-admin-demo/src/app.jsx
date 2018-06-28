@@ -6,6 +6,7 @@ import 'cube.css/src/scss/neat.scss'
 import Layout from 'component/layout/index.jsx';
 import Login from 'page/login/index.jsx';
 import Home from 'page/home/index.jsx';
+import Error from 'page/error/index.jsx';
 
 class App extends React.Component {
   render() {
@@ -17,7 +18,8 @@ class App extends React.Component {
             props => (
               <Layout>
                 <Switch>
-                  <Route path="/" component={Home} />
+                  <Route exact path="/" component={Home} />
+                  <Route component={Error} />
                 </Switch>
               </Layout>
             )

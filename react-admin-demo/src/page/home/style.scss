@@ -21,5 +21,12 @@
     text-align: center;
     line-height: 120px;
     border-radius: 4px;
+    font-size: 24px;
+    opacity: .9;
+    transition: all .3s;
+    &:hover {
+      opacity: 1;
+      transform: scale(1.08);
+    }
   }
 }
