@@ -7,3 +7,7 @@ export function ManageUserLogin(data) {
 export function ManageUserLogout() {
     return request({url: '/user/logout.do'})
 }
+
+export function UserList(data) {
+    return request({url: '/manage/user/list.do', data})
+}
