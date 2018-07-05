@@ -7,9 +7,9 @@ class PageTitle extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="page-title">
                 <div className="main-title">{this.props.title}</div>
-                {this.props.children}
+                <div className="title-right">{this.props.children}</div>
             </div>
         );
     }

@@ -3,6 +3,7 @@ import {Menu} from 'element-react'
 import './style.scss';
 
 const MENU_MAPPING = {
+    '2-1': '/product',
     '4-1': '/user'
 }
 

@@ -1,13 +1,22 @@
 .bd {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  .content {
+    flex: 1;
+    width: 100%;
+    overflow: auto;
+  }
+}
+
+.page-title {
+  position: relative;
+  .title-right {
     position: absolute;
-    top: 60px;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    .content {
-        flex: 1;
-        width: 100%;
-        overflow: auto;
-    }
+    top: 0;
+    right: 30px;
+  }
 }

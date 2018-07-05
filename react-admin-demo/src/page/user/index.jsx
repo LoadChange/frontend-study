@@ -5,28 +5,13 @@ import {Layout, Table, Button, Pagination} from 'element-react';
 import PageTitle from 'component/page-title/index.jsx';
 
 const columns = [
-    {label: "ID", prop: "id", width: 90, fixed: 'left'},
+    {label: "ID", prop: "id", width: 90},
     {label: "用户名", prop: "username", width: 140},
     {label: "邮箱", prop: "email", width: 220},
     {label: "手机号", prop: "phone", width: 140},
-    {label: "安全问题", prop: "question", width: 140},
-    {label: "答案", prop: "answer", width: 140},
-    {label: "创建时间", prop: "createTime", width: 180},
-    {label: "修改时间", prop: "updateTime", width: 180},
-    {
-        label: "操作",
-        prop: "zip",
-        fixed: 'right',
-        width: 100,
-        render: () => {
-            return (
-                <div>
-                    <Button type="text" size="small">查看</Button>
-                    <Button type="text" size="small">编辑</Button>
-                </div>
-            )
-        }
-    }
+    {label: "安全问题", prop: "question"},
+    {label: "答案", prop: "answer"},
+    {label: "注册时间", width: 220, render: data => new Date(data.createTime).toLocaleString()}
 ]
 
 const pageSize = 10
@@ -58,7 +43,7 @@ class User extends React.Component {
     render() {
         return (
             <div>
-                <PageTitle title="首页"/>
+                <PageTitle title="用户列表"/>
                 <div className="user-list">
                     <Table
                         style={{width: '100%'}}

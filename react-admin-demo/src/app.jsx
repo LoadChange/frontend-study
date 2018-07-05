@@ -8,6 +8,8 @@ import Login from 'page/login/index.jsx';
 import Home from 'page/home/index.jsx';
 import User from 'page/user/index.jsx';
 import Error from 'page/error/index.jsx';
+import ProductRouter from 'page/product/router.jsx';
+
 
 class App extends React.Component {
 
@@ -18,6 +20,7 @@ class App extends React.Component {
                     <Route exact path="/" component={Home}/>
                     <Route path="/user/index" component={User}/>
                     <Redirect exact from="/user" to="/user/index"/>
+                    <Route path="/product" component={ProductRouter}/>
                     <Route component={Error}/>
                 </Switch>
             </Layout>);
