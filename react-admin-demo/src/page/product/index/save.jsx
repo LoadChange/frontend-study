@@ -1,21 +1,13 @@
 import React from 'react';
-import {getProductList, searchProductList, setSaleStatus} from 'api/ProductApi.jsx'
 import {
     Layout,
     Form,
     Input,
-    Select,
-    Table,
-    Switch,
-    Checkbox,
     Button,
-    Pagination,
-    MessageBox,
-    Message,
-    Radio,
-    TimePicker
+    Upload
 } from 'element-react';
-import PageTitle from 'component/page-title/index.jsx';
+import CategorySelector from './category-selector.jsx'
+import PageTitle from 'component/page-title/index.jsx'
 
 class ProductList extends React.Component {
     constructor(props) {
@@ -70,12 +62,6 @@ class ProductList extends React.Component {
         });
     }
 
-    handleReset(e) {
-        e.preventDefault();
-
-        this.refs.form.resetFields();
-    }
-
     onChange(key, value) {
         this.setState({
             form: Object.assign({}, this.state.form, {[key]: value})
@@ -86,67 +72,55 @@ class ProductList extends React.Component {
         return (
             <div>
                 <PageTitle title="添加商品"/>
-                <div>
+                <div className="form-box">
                     <Form ref="form" model={this.state.form} rules={this.state.rules} labelWidth="80"
                           className="demo-ruleForm">
-                        <Form.Item label="活动名称" prop="name">
+                        <Form.Item label="商品名称" prop="name">
                             <Input value={this.state.form.name} onChange={this.onChange.bind(this, 'name')}></Input>
                         </Form.Item>
-                        <Form.Item label="活动区域" prop="region">
-                            <Select value={this.state.form.region} placeholder="请选择活动区域"
-                                    onChange={this.onChange.bind(this, 'region')}>
-                                <Select.Option label="区域一" value="shanghai"></Select.Option>
-                                <Select.Option label="区域二" value="beijing"></Select.Option>
-                            </Select>
+                        <Form.Item label="所属描述" prop="name">
+                            <Input value={this.state.form.name} onChange={this.onChange.bind(this, 'name')}></Input>
                         </Form.Item>
-                        <Form.Item label="活动时间" required={true}>
-                            <Layout.Col span="11">
-                                <Form.Item prop="date1" labelWidth="0px">
-                                    <DatePicker
-                                        value={this.state.form.date1}
-                                        placeholder="选择日期"
-                                        onChange={this.onChange.bind(this, 'date1')}
-                                    />
-                                </Form.Item>
-                            </Layout.Col>
-                            <Layout.Col className="line" span="2">-</Layout.Col>
-                            <Layout.Col span="11">
-                                <Form.Item prop="date2" labelWidth="0px">
-                                    <TimePicker
-                                        value={this.state.form.date2}
-                                        selectableRange="18:30:00 - 20:30:00"
-                                        placeholder="选择时间"
-                                        onChange={this.onChange.bind(this, 'date2')}
-                                    />
-                                </Form.Item>
-                            </Layout.Col>
+                        <Form.Item label="所属分类" prop="region">
+                            <CategorySelector/>
                         </Form.Item>
-                        <Form.Item label="即时配送" prop="delivery">
-                            <Switch value={this.state.form.delivery}
-                                    onChange={this.onChange.bind(this, 'delivery')}></Switch>
+                        <Form.Item label="商品价格" prop="name">
+                            <Layout.Row gutter="20">
+                                <Layout.Col span="8">
+                                    <Input value={this.state.form.name} onChange={this.onChange.bind(this, 'name')}
+                                           append="元"/>
+                                </Layout.Col>
+                            </Layout.Row>
                         </Form.Item>
-                        <Form.Item label="活动性质" prop="type">
-                            <Checkbox.Group value={this.state.form.type} onChange={this.onChange.bind(this, 'type')}>
-                                <Checkbox label="美食/餐厅线上活动" name="type"></Checkbox>
-                                <Checkbox label="地推活动" name="type"></Checkbox>
-                                <Checkbox label="线下主题活动" name="type"></Checkbox>
-                                <Checkbox label="单纯品牌曝光" name="type"></Checkbox>
-                            </Checkbox.Group>
+                        <Form.Item label="商品库存" prop="name">
+                            <Layout.Row gutter="20">
+                                <Layout.Col span="8">
+                                    <Input value={this.state.form.name} onChange={this.onChange.bind(this, 'name')}
+                                           append="件"/>
+                                </Layout.Col>
+                            </Layout.Row>
                         </Form.Item>
-                        <Form.Item label="特殊资源" prop="resource">
-                            <Radio.Group value={this.state.form.resource}
-                                         onChange={this.onChange.bind(this, 'resource')}>
-                                <Radio value="线上品牌商赞助"></Radio>
-                                <Radio value="线下场地免费"></Radio>
-                            </Radio.Group>
+                        <Form.Item label="商品图片" prop="name">
+                            <Upload
+                                className="upload-demo"
+                                drag
+                                action="//jsonplaceholder.typicode.com/posts/"
+                                multiple
+                                tip={<div className="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>}
+                            >
+                                <i className="el-icon-upload"></i>
+                                <div className="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+                            </Upload>
                         </Form.Item>
-                        <Form.Item label="活动形式" prop="desc">
-                            <Input type="textarea" value={this.state.form.desc}
-                                   onChange={this.onChange.bind(this, 'desc')}></Input>
+                        <Form.Item label="商品详情" prop="name">
+                            <Input
+                                type="textarea"
+                                autosize={{minRows: 4, maxRows: 4}}
+                                value={this.state.form.name} onChange={this.onChange.bind(this, 'name')}></Input>
                         </Form.Item>
+
                         <Form.Item>
-                            <Button type="primary" onClick={this.handleSubmit.bind(this)}>立即创建</Button>
-                            <Button onClick={this.handleReset.bind(this)}>重置</Button>
+                            <Button type="primary" onClick={this.handleSubmit.bind(this)}>提交</Button>
                         </Form.Item>
                     </Form>
                 </div>

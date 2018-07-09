@@ -11,3 +11,7 @@ export function searchProductList(data) {
 export function setSaleStatus(data) {
     return request({url: '/manage/product/set_sale_status.do', data})
 }
+
+export function getCategoryList(categoryId = 0) {
+    return request({url: '/manage/category/get_category.do', data: {categoryId}})
+}
