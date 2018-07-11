@@ -33,6 +33,7 @@ class CategorySelector extends React.Component {
         getCategoryList(this.state.firstCategoryId)
             .then(res => this.setState({secondCategoryList: res.data, secondCategoryLoading: false}))
             .catch(errMsg => Message.error(errMsg))
+        return this
     }
 
     onChange(type, categoryId) {
@@ -42,7 +43,21 @@ class CategorySelector extends React.Component {
                 secondCategoryList: [],
                 secondCategoryLoading: true,
                 secondCategoryId: 0,
-            }, () => this.loadSecondCategoryList())
+            }, () => this.loadSecondCategoryList().onPropsCategoryChange())
+        } else {
+            this.setState({
+                secondCategoryId: categoryId,
+            }, () => this.onPropsCategoryChange())
+        }
+    }
+
+    onPropsCategoryChange() {
+        let categoryChangable = typeof this.props.onCategoryChange === 'function'
+        if (!categoryChangable) return
+        if (this.state.secondCategoryId) {
+            this.props.onCategoryChange(this.state.secondCategoryId, this.state.firstCategoryId)
+        } else {
+            this.props.onCategoryChange(this.state.firstCategoryId, 0)
         }
     }
 
@@ -59,15 +74,21 @@ class CategorySelector extends React.Component {
                 }
             </Select>
             <div style={{width: '30px', display: 'inline-block'}}/>
-            <Select value={this.state.secondCategoryId}
-                    placeholder="请选择二级分类"
-                    loading={this.state.secondCategoryLoading}>
-                {
-                    this.state.secondCategoryList.map(({name, id}) => (
-                        <Select.Option label={name} value={id} key={id}/>
-                    ))
-                }
-            </Select>
+            {
+                this.state.secondCategoryList.length ? (
+                    <Select value={this.state.secondCategoryId}
+                            placeholder="请选择二级分类"
+                            onChange={this.onChange.bind(this, 'second')}
+                            loading={this.state.secondCategoryLoading}>
+                        {
+                            this.state.secondCategoryList.map(({name, id}) => (
+                                <Select.Option label={name} value={id} key={id}/>
+                            ))
+                        }
+                    </Select>
+                ) : null
+            }
+
         </Layout.Row>)
     }
 }
