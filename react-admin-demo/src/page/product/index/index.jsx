@@ -112,7 +112,7 @@ class ProductList extends React.Component {
         return (
             <div>
                 <PageTitle title="商品列表">
-                    <Link to="/product/save" className="el-button el-button--danger add-product">添加商品</Link>
+                    <Link to="/product/save/" className="el-button el-button--danger add-product">添加商品</Link>
                 </PageTitle>
                 <div className="user-list">
                     <Form inline={true} model={this.state.form}

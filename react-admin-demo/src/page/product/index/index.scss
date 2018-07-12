@@ -13,3 +13,12 @@
     display: block;
   }
 }
+
+.preview-upload {
+  .el-upload {
+    display: none;
+  }
+  .el-icon-close {
+    display: none;
+  }
+}

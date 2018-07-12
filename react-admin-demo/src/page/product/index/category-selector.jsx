@@ -21,6 +21,12 @@ class CategorySelector extends React.Component {
 
     componentDidMount() {
         this.loadFirstCategory()
+        let {parentCategoryId, categoryId} = this.props
+        if (!parentCategoryId) {
+            this.setState({firstCategoryId: categoryId})
+        } else {
+            this.setState({firstCategoryId: parentCategoryId}, () => this.loadSecondCategoryList())
+        }
     }
 
     loadFirstCategory() {
@@ -31,7 +37,11 @@ class CategorySelector extends React.Component {
 
     loadSecondCategoryList() {
         getCategoryList(this.state.firstCategoryId)
-            .then(res => this.setState({secondCategoryList: res.data, secondCategoryLoading: false}))
+            .then(res => this.setState({
+                secondCategoryList: res.data,
+                secondCategoryId: this.props.categoryId || 0,
+                secondCategoryLoading: false
+            }))
             .catch(errMsg => Message.error(errMsg))
         return this
     }
@@ -55,7 +65,7 @@ class CategorySelector extends React.Component {
         let categoryChangable = typeof this.props.onCategoryChange === 'function'
         if (!categoryChangable) return
         if (this.state.secondCategoryId) {
-            this.props.onCategoryChange(this.state.secondCategoryId, this.state.firstCategoryId)
+            this.props.onCategoryChange(this.state.secondCategoryId, this.state.secondCategoryId)
         } else {
             this.props.onCategoryChange(this.state.firstCategoryId, 0)
         }
@@ -66,6 +76,7 @@ class CategorySelector extends React.Component {
             <Select value={this.state.firstCategoryId} placeholder="请选择一级分类"
                     onChange={this.onChange.bind(this, 'first')}
                     loading={this.state.firstCategoryLoading}
+                    disabled={this.props.readOnly || (!this.state.firstCategoryList.length && !!this.state.firstCategoryId)}
             >
                 {
                     this.state.firstCategoryList.map(({name, id}) => (
@@ -79,6 +90,7 @@ class CategorySelector extends React.Component {
                     <Select value={this.state.secondCategoryId}
                             placeholder="请选择二级分类"
                             onChange={this.onChange.bind(this, 'second')}
+                            disabled={this.props.readOnly || (!this.state.secondCategoryList.length && !!this.state.firstCategoryId)}
                             loading={this.state.secondCategoryLoading}>
                         {
                             this.state.secondCategoryList.map(({name, id}) => (

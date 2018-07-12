@@ -1,11 +1,19 @@
 import request from './base.js'
 
+export function getProduct(productId) {
+    return request({url: '/manage/product/detail.do', data: {productId}})
+}
+
 export function getProductList(data) {
     return request({url: '/manage/product/list.do', data})
 }
 
 export function searchProductList(data) {
     return request({url: '/manage/product/search.do', data})
+}
+
+export function saveProductList(data) {
+    return request({url: '/manage/product/save.do', data})
 }
 
 export function setSaleStatus(data) {

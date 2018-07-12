@@ -26,30 +26,7 @@ class ProductList extends React.Component {
             stock: '',
             subImages: [],
             detail: '',
-            fileList: [],
-            rules: {
-                name: [
-                    {required: true, message: '请输入商品名称', trigger: 'blur'}
-                ],
-                subtitle: [
-                    {required: true, message: '请输入商品描述', trigger: 'blur'}
-                ],
-                categoryId: [
-                    {type: 'number', required: true, message: '请选择商品分类', trigger: 'change'}
-                ],
-                price: [
-                    {required: true, message: '请输入商品价格', trigger: 'blur'}
-                ],
-                stock: [
-                    {required: true, message: '请输入商品库存', trigger: 'blur'}
-                ],
-                subImages: [
-                    {type: 'array', required: true, message: '请上传一张图片', trigger: 'change'}
-                ],
-                detail: [
-                    {required: true, message: '请输入商品描述', trigger: 'blur'}
-                ]
-            }
+            fileList: []
         };
     }
 
@@ -92,46 +69,6 @@ class ProductList extends React.Component {
         console.log('categoryId:', categoryId, 'parentCategoryId:', parentCategoryId)
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
-
-
-        this.refs.form.validate(valid => {
-            if (!valid) return
-            let product = {
-                name: this.state.name,
-                subtitle: this.state.subtitle,
-                categoryId: this.state.categoryId,
-                price: this.state.price,
-                stock: this.state.stock,
-                subImages: this.state.subImages.map(img => img.uri) + '',
-                detail: this.state.detail,
-            }
-            if (this.state.id) {
-                product.id = this.state.id
-            }
-            saveProductList(product).then(res => {
-                if (res.status) {
-                    Notification.error({
-                        title: '错误',
-                        message: res.data || '商品保存失败'
-                    });
-                    return
-                }
-                MessageBox.msgbox({
-                    title: '消息',
-                    message: res.data || '商品保存成功'
-                }).then(() => {
-                    location.href = '/#/product'
-                })
-            })
-        })
-    }
-
-    onChange(key, value) {
-        this.setState({[key]: value})
-    }
-
     onUploadSuccess(res) {
         this.setState({
             subImages: [...this.state.subImages, res.data]
@@ -154,20 +91,21 @@ class ProductList extends React.Component {
     render() {
         return (
             <div>
-                <PageTitle title={(this.state.id ? '编辑' : '添加') + '商品'}/>
+                <PageTitle title="预览商品"/>
                 {
                     this.state.loading ? null : (
                         <div className="form-box">
                             <Form ref="form" model={this.state} rules={this.state.rules} labelWidth="80"
                                   className="demo-ruleForm">
                                 <Form.Item label="商品名称" prop="name">
-                                    <Input value={this.state.name} onChange={this.onChange.bind(this, 'name')}/>
+                                    <span>{this.state.name}</span>
                                 </Form.Item>
                                 <Form.Item label="商品描述" prop="subtitle">
-                                    <Input value={this.state.subtitle} onChange={this.onChange.bind(this, 'subtitle')}/>
+                                    <span>{this.state.subtitle}</span>
                                 </Form.Item>
                                 <Form.Item label="所属分类" prop="categoryId">
                                     <CategorySelector
+                                        readOnly
                                         categoryId={this.state.categoryId}
                                         parentCategoryId={this.state.parentCategoryId}
                                         onCategoryChange={(categoryId, parentCategoryId) => this.onCategoryChange(categoryId, parentCategoryId)}/>
@@ -175,21 +113,20 @@ class ProductList extends React.Component {
                                 <Form.Item label="商品价格" prop="price">
                                     <Layout.Row>
                                         <Layout.Col span="8">
-                                            <Input value={this.state.price} onChange={this.onChange.bind(this, 'price')}
-                                                   append="元"/>
+                                            <span>{this.state.price}元</span>
                                         </Layout.Col>
                                     </Layout.Row>
                                 </Form.Item>
                                 <Form.Item label="商品库存" prop="stock">
                                     <Layout.Row>
                                         <Layout.Col span="8">
-                                            <Input value={this.state.stock} onChange={this.onChange.bind(this, 'stock')}
-                                                   append="件"/>
+                                            <span>{this.state.stock}件</span>
                                         </Layout.Col>
                                     </Layout.Row>
                                 </Form.Item>
                                 <Form.Item label="商品图片" prop="subImages">
                                     <Upload
+                                        className="preview-upload"
                                         multiple
                                         accept="image/*"
                                         action="/manage/product/upload.do"
@@ -204,14 +141,7 @@ class ProductList extends React.Component {
                                     </Upload>
                                 </Form.Item>
                                 <Form.Item label="商品详情" prop="detail">
-                                    <Input
-                                        type="textarea"
-                                        autosize={{minRows: 4, maxRows: 4}}
-                                        value={this.state.detail} onChange={this.onChange.bind(this, 'detail')}/>
-                                </Form.Item>
-
-                                <Form.Item>
-                                    <Button type="primary" onClick={this.handleSubmit.bind(this)}>提交</Button>
+                                    <p dangerouslySetInnerHTML={{__html: this.state.detail}}/>
                                 </Form.Item>
                             </Form>
                         </div>
