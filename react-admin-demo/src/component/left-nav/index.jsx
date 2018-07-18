@@ -4,7 +4,8 @@ import './style.scss';
 
 const MENU_MAPPING = {
     '2-1': '/product',
-    '4-1': '/user'
+    '2-2': '/product/category',
+    '4-1': '/user',
 }
 
 class LeftNav extends React.Component {
