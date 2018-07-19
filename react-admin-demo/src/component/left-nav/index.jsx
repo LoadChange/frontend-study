@@ -5,6 +5,7 @@ import './style.scss';
 const MENU_MAPPING = {
     '2-1': '/product',
     '2-2': '/product/category',
+    '3-1': '/order',
     '4-1': '/user',
 }
 
