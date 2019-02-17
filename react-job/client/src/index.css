@@ -1,0 +1,45 @@
+.error-msg {
+    color: #ff5500;
+    padding-left: 10px;
+}
+
+.am-tab-bar {
+    position: fixed;
+    bottom: 0;
+    height: auto;
+    width: 100%;
+}
+
+.fixd-header.am-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.page-content {
+    padding: 45px 5px;
+}
+
+.chat-main {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    bottom: 44px;
+    left: 0;
+    overflow: scroll;
+}
+
+#chat-page .chat-me .am-list-extra {
+    flex-basis: auto;
+}
+
+#chat-page .chat-me .am-list-content {
+    text-align: right;
+}
+
+.stick-footer {
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
