@@ -2,8 +2,10 @@ import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+// import AM from './3.539c640e.chunk.js'
+
 const app = import('./App');
-import('./3.539c640e.chunk.js').then(res=>{
+require('./3.539c640e.chunk.js').then(res=>{
     console.log(res);
 })
 // const Test = lazy(() => import('./3.539c640e.chunk'));
