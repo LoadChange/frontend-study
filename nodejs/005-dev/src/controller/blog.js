@@ -26,7 +26,24 @@ const getDetail = id => {
   };
 };
 
+const newBlog = blog => {
+  console.log('new', blog);
+  return { id: 3 };
+};
+
+const updateBlog = (id, blog) => {
+  console.log('update', id, blog);
+  return true;
+};
+const deleteBlog = id => {
+  console.log('delete', id);
+  return true;
+};
+
 module.exports = {
   getList,
-  getDetail
+  getDetail,
+  newBlog,
+  updateBlog,
+  deleteBlog
 };
