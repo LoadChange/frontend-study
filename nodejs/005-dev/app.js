@@ -21,7 +21,7 @@ const getPostData = req => {
         resolve({});
         return;
       }
-      console.log(postData)
+      console.log(postData) 
       resolve(JSON.parse(postData));
     });
   });
