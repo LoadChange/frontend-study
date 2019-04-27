@@ -57,6 +57,7 @@ const serverHandle = (req, res) => {
     userId = `${Date.now()}_${Math.random()}`;
     SESSION_DATA[userId] = {};
   }
+  req.sessionId = userId;
   req.session = SESSION_DATA[userId];
 
   res.setHeader('Content-type', 'application/json');

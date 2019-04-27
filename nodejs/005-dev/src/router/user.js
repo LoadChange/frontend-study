@@ -1,5 +1,6 @@
 const { login } = require('../controller/user');
 const { SuccessModel, ErrorModel } = require('../model/resModel');
+const { set, get } = require('../db/redis');
 
 const handleUserRouter = (req, res) => {
   const { method, url, path } = req;
@@ -10,6 +11,7 @@ const handleUserRouter = (req, res) => {
       return results.then(user => {
         if (user.username) {
           req.session.user = user;
+          set(req.sessionId, req.session);
           return new SuccessModel(user);
         }
         return new ErrorModel('登录失败');
@@ -18,9 +20,9 @@ const handleUserRouter = (req, res) => {
   }
 
   if (method === 'GET' && path === '/api/user/login-test') {
-    console.log('req.session',req.session) 
-    if (req.session) {
-      return Promise.resolve(new SuccessModel(req.session));
+    const sessionResult = get(req.sessionId);
+    if (sessionResult) {
+      return sessionResult.then(res => new SuccessModel(res));
     }
     return Promise.resolve(new ErrorModel('尚未登录'));
   }

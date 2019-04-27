@@ -22,12 +22,12 @@ const newBlog = blog => {
 };
 
 const updateBlog = (id, blog) => {
-  const { title, content } = blog;
-  const sql = `update blogs set title='${title}', content='${content}' where id='${id}'`;
+  const { title, content, author } = blog;
+  const sql = `update blogs set title='${title}', content='${content}' where id='${id}' and author=${author}`;
   return exec(sql).then(({ affectedRows }) => affectedRows > 0);
 };
-const deleteBlog = id => {
-  const sql = `delete from blogs where id = '${id}'`;
+const deleteBlog = (id, author) => {
+  const sql = `delete from blogs where id = '${id}' and author='${author}'`;
   return exec(sql).then(({ affectedRows }) => affectedRows > 0);
 };
 
