@@ -1,4 +1,5 @@
 const querystring = require('querystring');
+const { access } = require('./src/utils/log');
 const handleBlogRouter = require('./src/router/blog');
 const handleUserRouter = require('./src/router/user');
 
@@ -35,6 +36,7 @@ const getPostData = req => {
 };
 
 const serverHandle = (req, res) => {
+  access(`${req.method} -- ${req.url}} -- ${req.headers['user-agent']} -- ${Date.now()}`)
   const { url, headers } = req;
   const [path, _query] = url.split('?');
   req.path = path;
