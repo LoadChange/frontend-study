@@ -1,4 +1,5 @@
 const { exec } = require('../db/mysql');
+const xss = require('xss');
 const getList = (author, keyword) => {
   const sql = ['select * from blogs where 1=1 '];
   if (author) {
@@ -23,6 +24,7 @@ const newBlog = blog => {
 
 const updateBlog = (id, blog) => {
   const { title, content, author } = blog;
+  title = xss(title);
   const sql = `update blogs set title='${title}', content='${content}' where id='${id}' and author=${author}`;
   return exec(sql).then(({ affectedRows }) => affectedRows > 0);
 };

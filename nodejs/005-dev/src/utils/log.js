@@ -18,7 +18,7 @@ const accessWriteStream = createWriteStream('access.log');
 function access(log) {
   if (env === 'dev') {
     console.log(log);
-    return;
+    // return;
   }
   writeLog(accessWriteStream, log);
 }
