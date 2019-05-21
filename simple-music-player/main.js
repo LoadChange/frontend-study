@@ -7,8 +7,8 @@ app.on("ready", () => {
     webPreferences: {
       nodeIntegration: true
     }
-  });
-  mainWindow.loadFile("index.html");
+  }); 
+  mainWindow.loadFile("index.html"); 
   const secondWindow = new BrowserWindow({
     width: 400,
     height: 300,
