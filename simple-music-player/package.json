@@ -14,10 +14,13 @@
     "player",
     "demo"
   ],
-  "author": "soocto@gmail.com", 
+  "author": "soocto@gmail.com",
   "license": "MIT",
   "devDependencies": {
     "electron": "^5.0.2",
     "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1"
   }
 }
