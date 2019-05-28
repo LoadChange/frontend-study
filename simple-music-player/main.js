@@ -7,22 +7,6 @@ app.on("ready", () => {
     webPreferences: {
       nodeIntegration: true
     }
-  });  
-  mainWindow.loadFile("index.html");
-
-  ipcMain.on("message", (event, arg) => {
-    console.log(arg);
-    // event.sender.send("reply", "hello from main");
-    mainWindow.send("reply", "hello from main");
-  });
-
-  const secondWindow = new BrowserWindow({
-    width: 400,
-    height: 300,
-    webPreferences: {
-      nodeIntegration: true
-    },
-    parent: mainWindow
-  });
-  secondWindow.loadFile("second.html");
+  }); 
+  mainWindow.loadFile("./renderer/index.html");
 });
