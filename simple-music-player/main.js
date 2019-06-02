@@ -28,19 +28,22 @@ app.on("ready", () => {
         height: 400,
         webPreferences: {
           nodeIntegration: true
-        },
-        parent: mainWindow
+        }, 
+        parent: mainWindow 
       },
       "./renderer/add.html"
     );
   });
-  ipcMain.on("open-music-file", () => {
+  ipcMain.on("open-music-file", event => {
     dialog.showOpenDialog(
       {
         properties: ["openFile", "multiSelections"],
         filters: [{ name: "Music", extensions: ["mp3"] }]
       },
       files => {
+        if (files) {
+          event.sender.send("selected-file", files);
+        }
         console.log(files);
       }
     );
