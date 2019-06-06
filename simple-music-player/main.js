@@ -1,19 +1,6 @@
 const { app, BrowserWindow, ipcMain, dialog } = require("electron");
-const Store = require('electron-store');
-const store = new Store();
-console.log(app.getPath('userData'))
-store.set('unicorn', '🦄');
-console.log(store.get('unicorn'));
-//=> '🦄'
-
-// Use dot-notation to access nested properties
-store.set('foo.bar', true);
-console.log(store.get('foo'));
-//=> {bar: true}
-
-store.delete('unicorn');
-console.log(store.get('unicorn'));
-//=> undefined
+const DataStore = require("./MusicDataStore");
+const myStore = new DataStore({ name: "MusicData" });
 class AppWindow extends BrowserWindow {
   constructor(config, fileLocation) {
     const basicConfig = {
@@ -42,11 +29,15 @@ app.on("ready", () => {
         height: 400,
         webPreferences: {
           nodeIntegration: true
-        }, 
-        parent: mainWindow 
+        },
+        parent: mainWindow
       },
       "./renderer/add.html"
     );
+  });
+  ipcMain.on("add-tracks", (event, tracks) => {
+    const updateTracks = myStore.addTracks(tracks).getTracks();
+    console.log(updateTracks);
   });
   ipcMain.on("open-music-file", event => {
     dialog.showOpenDialog(
@@ -58,7 +49,6 @@ app.on("ready", () => {
         if (files) {
           event.sender.send("selected-file", files);
         }
-        console.log(files);
       }
     );
   });
