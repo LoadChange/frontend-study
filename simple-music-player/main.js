@@ -29,7 +29,7 @@ app.on("ready", () => {
   ipcMain.on("add-music-window", () => {
     const addWindow = new AppWindow(
       {
-        width: 500,
+        width: 500, 
         height: 400,
         webPreferences: {  
           nodeIntegration: true
@@ -39,7 +39,7 @@ app.on("ready", () => {
       "./renderer/add.html"
     );
   });
-
+ 
   ipcMain.on("add-tracks", (event, tracks) => {
     const updateTracks = myStore.addTracks(tracks).getTracks();
     mainWindow.send("getTracks", updateTracks);

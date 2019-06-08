@@ -1,0 +1,6 @@
+#tracks-list ul{
+  user-select: none;
+}
+#tracks-list .pointer {
+  cursor: pointer;
+}

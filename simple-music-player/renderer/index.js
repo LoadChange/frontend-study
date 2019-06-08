@@ -1,5 +1,8 @@
 const { ipcRenderer } = require("electron");
 const { $ } = require("./helper");
+const musicAudio = new Audio();
+let allTracks = [];
+let currentTrack = null;
 
 $("add-music-button").addEventListener("click", () => {
   ipcRenderer.send("add-music-window");
@@ -9,14 +12,19 @@ const renderListHTML = tracks => {
   const tracksList = $("tracks-list");
   const tracksListHTML = tracks.reduce((html, track) => {
     html += `
-        <li class="row music-track list-group-item d-flex justify-content-between align-item-center">
+        <li
+        class="row music-track list-group-item d-flex justify-content-between align-item-center"
+        data-id=${track.id}
+        data-path=${track.path}
+        data-file-name=${track.fileName}
+        >
             <div class="col-10">
                 <i class="mr-2">🎵</i>
-                <b>${track.fileName}</b>
+                <b class="pointer">${track.fileName}</b>
             </div>
             <div class="col-2">
-                <span class="mr-3">▶️</span>
-                <span>❌</span>
+                <span class="pointer js-play mr-3">▶️</span>
+                <span class="pointer js-delete">❌</span>
             </div>
         </li>`;
     return html;
@@ -30,4 +38,30 @@ const renderListHTML = tracks => {
 
 ipcRenderer.on("getTracks", (event, tracks) => {
   renderListHTML(tracks);
+  allTracks = tracks;
+});
+
+$("tracks-list").addEventListener("click", event => {
+  event.preventDefault();
+  const [eventName] = ["js-play", "js-pause", "js-delete"].filter(
+    e => event.target.className.indexOf(e) >= 0
+  );
+  if (!eventName) return;
+  const { dataset } = event.target.parentElement.parentElement;
+  const { id, fileName, path } = dataset;
+  if (eventName === "js-play") {
+    currentTrack = allTracks.find(track => track.id === id);
+    musicAudio.src = path;
+    musicAudio.play();
+    event.target.innerHTML = "⏸";
+    event.target.classList.replace("js-play", "js-pause");
+  }
+  if (eventName === "js-pause") {
+    musicAudio.pause();
+    event.target.innerHTML = "️️▶️";
+    event.target.classList.replace("js-pause", "js-play");
+  }
+  if (eventName === "js-delete") {
+  }
+  console.log(id, fileName, path);
 });
