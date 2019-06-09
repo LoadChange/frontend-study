@@ -50,18 +50,29 @@ $("tracks-list").addEventListener("click", event => {
   const { dataset } = event.target.parentElement.parentElement;
   const { id, fileName, path } = dataset;
   if (eventName === "js-play") {
-    currentTrack = allTracks.find(track => track.id === id);
-    musicAudio.src = path;
+    if ((currentTrack && currentTrack.id !== id) || !currentTrack) {
+      currentTrack = allTracks.find(track => track.id === id);
+      musicAudio.src = path;
+    }
     musicAudio.play();
+    const [pre] = document.getElementsByClassName("js-pause");
+    if (pre) {
+      pre.innerHTML = "️️▶️";
+      pre.classList.replace("js-pause", "js-play");
+    }
     event.target.innerHTML = "⏸";
     event.target.classList.replace("js-play", "js-pause");
   }
   if (eventName === "js-pause") {
     musicAudio.pause();
-    event.target.innerHTML = "️️▶️";
+    event.target.innerHTML = "▶️";
     event.target.classList.replace("js-pause", "js-play");
   }
   if (eventName === "js-delete") {
+    if (currentTrack && currentTrack.id === id) {
+      musicAudio.pause();
+    }
+    ipcRenderer.send("delete-track", id);
   }
   console.log(id, fileName, path);
 });

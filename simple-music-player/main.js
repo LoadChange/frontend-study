@@ -15,7 +15,7 @@ class AppWindow extends BrowserWindow {
     this.loadFile(fileLocation);
     this.once("ready-to-show", () => {
       this.show();
-    });
+    }); 
   }
 }
 
@@ -42,6 +42,10 @@ app.on("ready", () => {
  
   ipcMain.on("add-tracks", (event, tracks) => {
     const updateTracks = myStore.addTracks(tracks).getTracks();
+    mainWindow.send("getTracks", updateTracks);
+  });
+  ipcMain.on("delete-track", (event, deleteId) => {
+    const updateTracks = myStore.deleteTracks(deleteId).getTracks();
     mainWindow.send("getTracks", updateTracks);
   });
   ipcMain.on("open-music-file", event => {
