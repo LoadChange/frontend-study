@@ -52,7 +52,7 @@ $("tracks-list").addEventListener("click", event => {
   if (eventName === "js-play") {
     if ((currentTrack && currentTrack.id !== id) || !currentTrack) {
       currentTrack = allTracks.find(track => track.id === id);
-      musicAudio.src = path;
+      musicAudio.src = encodeURI(currentTrack.path);
     }
     musicAudio.play();
     const [pre] = document.getElementsByClassName("js-pause");
@@ -75,4 +75,28 @@ $("tracks-list").addEventListener("click", event => {
     ipcRenderer.send("delete-track", id);
   }
   console.log(id, fileName, path);
+});
+
+const renderPlayerHTML = (name, duration) => {
+  const player = $("player-status");
+  const html = `
+    <div class="col fot-weight-bold">
+        正在播放：${name}
+    </div>
+    <div class="col">
+        <span id="current-seeker">00:00</span> / ${duration}
+    </div>
+    `;
+  player.innerHTML = html;
+};
+const updateProgressHTML = currentTime => {
+  const seeker = $("current-seeker");
+  seeker.innerHTML = currentTime;
+};
+musicAudio.addEventListener("loadedmetadata", () => {
+  renderPlayerHTML(currentTrack.fileName, musicAudio.duration);
+});
+
+musicAudio.addEventListener("timeupdate", () => {
+  updateProgressHTML(musicAudio.currentTime);
 });
