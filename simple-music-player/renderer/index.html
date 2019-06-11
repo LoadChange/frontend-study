@@ -28,9 +28,18 @@
       </button>
       <div id="tracks-list" class="mt-4"></div>
     </div>
-    <div class="container fixed-bottom">
+    <div class="container fixed-bottom bg-white pb-4">
       <hr />
       <div class="row my-2" id="player-status"></div>
+      <div class="progress">
+        <div
+          class="progress-bar bg-success"
+          role="progressbar"
+          style="width: 0%;"
+        >
+          0%
+        </div>
+      </div>
     </div>
     <script>
       require("./index.js");

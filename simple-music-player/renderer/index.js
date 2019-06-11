@@ -1,5 +1,5 @@
 const { ipcRenderer } = require("electron");
-const { $ } = require("./helper");
+const { $, converDuration } = require("./helper");
 const musicAudio = new Audio();
 let allTracks = [];
 let currentTrack = null;
@@ -84,19 +84,23 @@ const renderPlayerHTML = (name, duration) => {
         正在播放：${name}
     </div>
     <div class="col">
-        <span id="current-seeker">00:00</span> / ${duration}
+        <span id="current-seeker">00:00</span> / ${converDuration(duration)}
     </div>
     `;
   player.innerHTML = html;
 };
-const updateProgressHTML = currentTime => {
+const updateProgressHTML = (currentTime, duration) => {
   const seeker = $("current-seeker");
-  seeker.innerHTML = currentTime;
+  seeker.innerHTML = converDuration(currentTime);
+  const progressBar = document.querySelector(".progress-bar");
+  const progress = Math.floor((currentTime / duration) * 100);
+  progressBar.style.width = `${progress}%`;
+  progressBar.innerHTML = `${progress}%`;
 };
 musicAudio.addEventListener("loadedmetadata", () => {
   renderPlayerHTML(currentTrack.fileName, musicAudio.duration);
 });
 
 musicAudio.addEventListener("timeupdate", () => {
-  updateProgressHTML(musicAudio.currentTime);
+  updateProgressHTML(musicAudio.currentTime, musicAudio.duration);
 });

@@ -1,4 +1,4 @@
-#tracks-list ul{
+body {
   user-select: none;
 }
 #tracks-list .pointer {
