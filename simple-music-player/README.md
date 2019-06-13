@@ -1,3 +1,7 @@
+# electron 音乐播放器
+
+> 基于 electron-quick-start 开发的 electron demo 项目
+
 # electron-quick-start
 
 **Clone and run for a quick way to see Electron in action.**
