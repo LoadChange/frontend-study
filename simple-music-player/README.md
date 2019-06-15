@@ -51,3 +51,12 @@ Note: If you're using Linux Bash for Windows, [see this guide](https://www.howto
 ## 打包参考
 
 https://github.com/zulip/zulip-desktop/blob/master/package.json
+
+
+## 总结
+
+1. 基本概念，搭建本地开发环境
+2. 主进程和渲染进程，进程通信
+3. 开发播放器，样式、数据持久化
+4. DOM操作 ，播放器操作
+5. 打包
