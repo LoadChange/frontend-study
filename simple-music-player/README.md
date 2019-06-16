@@ -60,3 +60,10 @@ https://github.com/zulip/zulip-desktop/blob/master/package.json
 3. 开发播放器，样式、数据持久化
 4. DOM操作 ，播放器操作
 5. 打包
+
+```
+Error: Unresolved node modules: jquery, popper.js
+....
+```
+
+https://github.com/electron-userland/electron-builder/issues/2529
