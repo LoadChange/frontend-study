@@ -60,4 +60,6 @@ app.use(
   })
 );
 
+app.use(express.static('public'));
+
 app.listen(3000);
