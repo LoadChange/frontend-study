@@ -15,21 +15,35 @@ const schema = buildSchema(`
         department: String
         salary(city: String): Int
     }
+    input AccountInput {
+        name: String
+        age: Int
+        sex: String
+        department: String
+    }
+    type Mutation {
+        createAccount(input: AccountInput): Account
+        updateAccount(id: ID!, input: AccountInput): Account
+    }
     type Query {
-        hello: String,
-        accountName: String,
-        age: Int,
+        hello: String
+        accountName: String
+        age: Int
         account(username: String): Account
+        accounts: [Account]
         getClassMates(classNo: Int!): [String]
     }
 `);
+
+const fakeDB = {};
 
 const rootValue = {
   hello: () => 'hello world!',
   accountName: () => 'apollo',
   age: () => 18,
-  account: () => ({
-    name: 'apollo',
+  accounts: () => Object.keys(fakeDB).map(key => fakeDB[key]),
+  account: ({ username }) => ({
+    name: username,
     age: 18,
     sex: '男',
     department: 'school',
@@ -46,6 +60,14 @@ const rootValue = {
       61: ['张二三', '李二四', '王二五'],
     };
     return obj[classNo];
+  },
+  createAccount({ input }) {
+    fakeDB[input.name] = input;
+    return input;
+  },
+  updateAccount({ id, input }) {
+    fakeDB[id] = input;
+    return input;
   },
 };
 
