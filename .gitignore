@@ -13,4 +13,5 @@ package.json
 *.ntvs*
 *.njsproj
 *.sln
+/graphql/apollo/.git
 
